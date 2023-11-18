@@ -1,0 +1,23 @@
+--------------------------> Data Types <---------------------------
+1)Byte  (store 8 bits of data)
+2)DB (Define Byte) (store 16 bits of data)
+3)DD (Define Double) (store 32 bits of data)
+
+
+Note: Basically mostly use data types are Byte and DB.when we deals with string data we use byte and when we deals with numerical data 
+      we use DD or DB 
+
+
+(For Example)
+include irvine32.inc   
+.data
+first_variable DD ?   ;when we write question mark we didnt initialize the value    (variable_name  data_type   value)
+second_variable DD 23                  
+.code                   
+main proc               
+mov eax,first_variable   ;for move variables data in register eax (eax(hold 64bits data) and ax(hold 32 bits data) depends on its architecture)
+
+call dumpregs    ;this expression show all register and value also in hexadecimal form.    
+exit            
+main endp      
+End

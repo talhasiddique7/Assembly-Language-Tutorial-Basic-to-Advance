@@ -1,0 +1,165 @@
+;unconditional LOOP
+;simple LOOP
+;LOOP	: jump to specified lable according to value of ECX (ECX != 0)
+
+include irvine32.inc
+
+.data
+str1 byte "Welcome",0ah, 0
+.code
+
+main Proc
+	mov ecx, 10
+	
+	repeat1:	; repeat is key word
+		mov edx, offset str1
+		call writestring
+		loop repeat1
+exit
+main endP
+end
+
+
+
+;unconditional LOOP
+;simple LOOP
+;LOOP	: jump to specified lable according to value of ECX (ECX != 0)
+
+
+
+include irvine32.inc
+.code
+
+main Proc
+	mov ecx, 10
+	mov eax, 0
+	repeat1:	
+		call writeint
+		call crlf ;moving to next line
+		add eax, 2 
+		loop repeat1
+exit
+main endP
+end
+
+
+;unconditional LOOP
+;simple LOOP
+;LOOP	: jump to specified lable according to value of ECX (ECX != 0)
+
+
+include irvine32.inc
+.code
+
+main Proc
+	mov ecx, 20
+	mov ebx, 1
+        mov ebx, 2
+	repeat1:
+                mov eax,ebx
+	        mov edx,0
+                div  ebx
+                cmp edx,0
+                jne L1
+                je evn
+                L1:
+		call writedec
+		call crlf ;moving to next line
+                evn:
+		inc ebx 
+		loop repeat1
+exit
+main endP
+end
+
+
+
+;unconditional LOOP
+;simple LOOP
+;LOOP	: jump to specified lable according to value of ECX (ECX != 0)
+
+
+
+include irvine32.inc
+
+.data
+str1 byte "2 * ",0
+str2 byte " = ", 0 
+
+.code
+main Proc
+	mov ecx, 10
+	mov ebx, 2
+	mov edi, 1
+	
+	repeat1:	
+		mov edx, offset str1
+		call writestring
+		
+		mov eax, edi
+		call writeint
+
+		mov edx, offset str2
+		call writestring
+
+		mul ebx
+
+		call writeint
+		call crlf
+		inc edi
+		
+		loop repeat1
+exit
+main endP
+end
+
+
+
+;unconditional LOOP
+;simple LOOP
+;LOOP	: jump to specified lable according to value of ECX (ECX != 0)
+
+
+
+include irvine32.inc
+
+.data
+
+str1 byte " * ",0
+str2 byte " = ", 0 
+str3 byte "Enter a number for which table is required: ", 0
+
+.code
+main Proc
+	mov ecx, 10
+	mov edi, 1
+	
+	mov edx, offset str3
+	call writestring
+	
+	call readint
+	mov ebx, eax 
+
+	repeat1:	
+		mov eax, ebx
+		call writeint
+
+		mov edx, offset str1
+		call writestring
+		
+		mov eax, edi
+		call writeint
+
+		mov edx, offset str2
+		call writestring
+
+		mul ebx
+
+		call writeint
+		call crlf
+		inc edi
+		
+		loop repeat1
+exit
+main endP
+end

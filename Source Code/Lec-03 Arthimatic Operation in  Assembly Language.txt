@@ -1,0 +1,192 @@
+
+;ARTHIMATIC OPERATIONS:
+;addition
+include Irvine32.inc
+.data
+a dd ?   ;variable
+b dd ?
+s1 byte "Enter First Number :",0  ;string
+s2 byte "Enter Second Number :",0
+s3 byte "Addition of two Numbers is :",0
+
+.code
+main proc
+
+mov edx,offset s1
+call writestring
+call readint
+mov a,eax
+call crlf
+mov edx,offset s2
+call writestring
+call readint
+add eax,a
+mov edx,offset s3
+call writestring
+call writeint
+
+exit
+main endp
+end
+
+;subtraction
+include Irvine32.inc
+.data
+a dd ?
+b dd ?
+s1 byte "Enter First Number :",0
+s2 byte "Enter Second Number :",0
+s3 byte "Subtraction of two Numbers is :",0
+
+.code
+main proc
+mov edx,offset s1
+call writestring
+call readint
+mov a,eax
+call crlf
+mov edx,offset s2
+call writestring
+call readint
+sub a,eax
+mov eax,a
+mov edx,offset s3
+call writestring
+call writeint
+exit
+main endp
+end
+;multiplication
+include Irvine32.inc
+.data
+a dd ?
+b dd ?
+s1 byte "Enter First Number :",0
+s2 byte "Enter Second Number :",0
+s3 byte "Multiplicaion of two  Numbers is:",0
+
+.code
+main proc
+mov edx,offset s1
+call writestring
+call readint
+mov a,eax
+call crlf
+
+mov edx,offset s2
+call writestring
+call readint
+mov b,eax
+call crlf
+mul a
+mov edx,offset s3
+call writestring
+call writedec
+exit
+main endp
+end
+
+
+
+
+;dividion
+include Irvine32.inc
+.data
+a dd ?
+b dd ?
+s1 byte "Enter First Number :",0
+s2 byte "Enter Second Number :",0
+s3 byte "Division of two Numbers is :",0
+s4 byte "Remainder is :",0
+
+.code
+main proc
+mov edx,offset s1
+call writestring
+call readint
+mov a,eax
+call crlf
+mov edx,offset s2
+call writestring
+call readint
+mov edx,0
+mov b,eax
+mov eax,a
+div b
+mov ebx,edx
+mov edx,offset s3
+call writestring
+call writeint
+call crlf
+mov edx,offset s4
+call writestring
+mov eax,ebx
+call writedec
+exit
+main endp
+end
+
+
+//ALL OPERATIONS IN ONE PROGRAMME
+include Irvine32.inc
+.data 
+a dd ?
+b dd ?
+addition dd ?
+multiply dd ?
+subtraction dd ?
+division dd ?
+
+s1 byte "Enter First Number :",0
+s2 byte "Enter Second Number :",0
+s3 byte "Additions of two Numbers is:",0
+s4 byte "Subtraction of two Numbers is:",0
+s5 byte "Multiplication of two Numbers is:",0
+s6 byte "Division of two Numbers is:",0
+.code
+main proc
+;+
+mov edx,offset s1
+call writestring
+call readint
+mov a,eax
+mov edx,offset s2
+call writestring
+call readint
+mov b,eax
+add eax,a
+mov addition,eax
+mov edx,offset s3
+call crlf
+call writestring 
+call writedec
+;-
+call crlf
+mov eax,a
+sub eax,b
+mov subtraction,eax
+mov edx,offset s4
+call writestring
+call writeint
+;*
+call crlf
+mov eax,a
+mul b
+mov multiply,eax
+mov edx,offset s5
+call writestring
+call writedec
+;/
+call crlf
+mov eax,a
+mov edx,0
+div b
+mov division,eax
+mov ebx,edx
+mov edx,offset s6
+call writestring
+call writedec
+
+exit
+main endp
+end

@@ -1,0 +1,23 @@
+Agenda:
+*print Hello world
+*input from user
+*output data
+
+include irvine32.inc   
+.data
+str1 byte "Hello World",0  ;string declaration after every end of string write ,0   this defines the end of the string
+first_variable DD ?                   
+.code                   
+main proc  
+             
+mov edx,offset str1   ;when we display any string move string in edx register with offset (offset mean whole string)
+call writestring      ;this expression print data from edx
+
+;input from user
+call readint                   ;(call readint expression take +,- input from user)(you can also write call readdec for unsigned operation)
+mov first_variable,eax         ;when we write call readint expression the data we input in console by default move in eax , when we move expression data copy to another variable
+
+call writeint  ;this expression display data from eax register      
+exit            
+main endp      
+End

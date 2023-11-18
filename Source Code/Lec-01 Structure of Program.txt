@@ -1,0 +1,9 @@
+include irvine32.inc   ;Irvine library include in code file
+.data                   ;in data section we initialize and declare variables
+.code                   ;we write functions in code section
+main proc               ;main function header (starter)
+
+                ;main function body
+exit            ;exit keyword terminate program after complete execution of main function
+main endp       ;end of main function
+End      ;end the program

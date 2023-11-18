@@ -1,0 +1,167 @@
+Today Agenda:
+*comparison between numbers
+*jump statements
+*inc and dec
+
+
+
+
+;Program 1
+include Irvine32.inc
+.data
+a dd ?
+b dd ?
+a1 byte "Enter First Number :",0
+a2 byte "Enter Second Number :",0
+a3 byte " is Greater than ",0
+.code
+main proc
+mov edx,offset a1
+call writestring
+call readint
+mov a,eax
+mov edx,offset a2
+call crlf
+call writestring
+call readint
+mov b,eax
+mov eax,a
+cmp eax,b
+ja l1
+jmp l2
+l1:
+ call writedec
+ mov edx,offset a3
+ call writestring
+ mov eax,b
+ call writedec
+ jmp l3
+l2:
+mov eax,b
+call writedec
+mov edx,offset a3
+call writestring
+mov eax,a
+call writedec
+jmp l3
+l3:
+exit
+main endp
+end
+
+
+
+
+
+
+;Program 2 (enter number from user and determine wether the number is odd or even)
+
+
+include irvine32.inc
+.data
+str1 byte "Number is Even",0
+str2 byte "Number is Odd",0
+dtr3 byte "Enter Number",0
+even dd ?
+num dd ?
+.code 
+main proc
+mov edx,offset str3
+call writestring 
+call readdec
+mov num,eax
+mov ebx,2     ;for divide number
+mov edx,0    ;you know well
+div ebx     
+cmp edx,0
+je Even
+jmp Odd
+
+Even:
+mov edx,offset str1
+call writestring
+jmp term
+
+Odd:
+mov edx,offset str2
+call writestring
+
+term:
+exit
+main endp
+end
+
+
+
+
+
+;program 3:
+
+include irvine32.inc
+.data
+
+num dd ?
+
+.code 
+main proc
+mov eax,5
+mov num,eax
+inc eax 	 ;this expression 1 incremnt in eax value
+call writeec
+call crlf
+mov eax,num
+dec eax		 ;this expression 1 decrement in eax value
+call writedec
+
+exit
+main endp
+end
+
+
+;Program 4
+include irvine32.inc
+.data
+s1 byte "Enter starting number:",0ah,0
+s2 byte "Enter ending number:",0ah,0
+s4 byte "Even Numbers between the limit are:",0ah,0
+.code
+main Proc
+mov edx,offset s1
+call writestring
+call readint
+mov edi,eax
+mov edx,offset s2
+call writestring
+call readint
+mov ebx,eax
+
+sub ebx,edi
+
+mov ecx,ebx
+mov eax,edi
+mov ebx,2
+mov edx,offset s4
+call writestring
+lable1:
+	mov eax,edi
+	mov edx,0
+	div ebx
+	cmp edx,0
+	je L1
+	jmp notEven
+	L1:
+	mov eax,edi
+	call writedec
+	call crlf
+	notEven:
+	inc edi    ;icrement of edi register
+	Loop lable1
+
+exit
+main endP
+end
+
+
+
+
+
